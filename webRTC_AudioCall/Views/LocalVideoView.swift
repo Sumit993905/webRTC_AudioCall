@@ -6,13 +6,34 @@
 //
 
 import SwiftUI
+import WebRTC
 
-struct LocalVideoView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct LocalVideoView: UIViewRepresentable {
+
+    let videoTrack: RTCVideoTrack?
+
+    func makeUIView(context: Context) -> UIView {
+
+        guard let track = videoTrack else {
+            let label = UILabel()
+            label.text = "Local Video"
+            label.textColor = .white
+            label.textAlignment = .center
+            label.backgroundColor = .darkGray
+            return label
+        }
+
+        let view = RTCMTLVideoView()
+        view.videoContentMode = .scaleAspectFill
+        track.add(view)
+        return view
     }
+
+    func updateUIView(_ uiView: UIView, context: Context) {}
 }
 
+
 #Preview {
-    LocalVideoView()
+    LocalVideoView(videoTrack: nil)
+        .frame(width: 120, height: 180)
 }

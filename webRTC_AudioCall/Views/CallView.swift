@@ -6,13 +6,58 @@
 //
 
 import SwiftUI
+import WebRTC
 
 struct CallView: View {
+
+    let roomId: String
+    let callType: CallType
+    let manager: WebRTCManager
+
+    @Environment(\.dismiss) private var dismiss
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+
+            if callType == .video,
+               let remote = manager.remoteVideoTrack {
+                RemoteVideoView(videoTrack: remote)
+            }
+
+            HStack {
+                Button("End Call") {
+                    manager.leaveRoom()
+                    dismiss()
+                }
+            }
+        }
+        .onAppear {
+            manager.startCall(type: callType)
+        }
     }
 }
 
-#Preview {
-    CallView()
+
+#Preview("Audio Call") {
+    ZStack {
+        Color.black
+        VStack {
+            Spacer()
+            Text("Audio Call")
+                .foregroundColor(.white)
+                .font(.title)
+            Spacer()
+        }
+    }
+}
+
+#Preview("Video Call") {
+    ZStack {
+        RemoteVideoView(videoTrack: nil)
+        LocalVideoView(videoTrack: nil)
+            .frame(width: 120, height: 180)
+            .cornerRadius(12)
+            .padding()
+            .position(x: 300, y: 150)
+    }
 }

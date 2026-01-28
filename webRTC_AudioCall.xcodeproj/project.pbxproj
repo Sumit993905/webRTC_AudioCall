@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		DF3352072F2A1A080093B6FA /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = DF3352062F2A1A080093B6FA /* SocketIO */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		DF3351FD2F2A0EA80093B6FA /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF3352072F2A1A080093B6FA /* SocketIO in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +100,7 @@
 			);
 			name = webRTC_AudioCall;
 			packageProductDependencies = (
+				DF3352062F2A1A080093B6FA /* SocketIO */,
 			);
 			productName = webRTC_AudioCall;
 			productReference = DF3351E12F2A0D1F0093B6FA /* webRTC_AudioCall.app */;
@@ -124,6 +130,9 @@
 			);
 			mainGroup = DF3351D82F2A0D1F0093B6FA;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				DF3352052F2A1A080093B6FA /* XCRemoteSwiftPackageReference "socket" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DF3351E22F2A0D1F0093B6FA /* Products */;
 			projectDirPath = "";
@@ -362,6 +371,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DF3352052F2A1A080093B6FA /* XCRemoteSwiftPackageReference "socket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DF3352062F2A1A080093B6FA /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF3352052F2A1A080093B6FA /* XCRemoteSwiftPackageReference "socket" */;
+			productName = SocketIO;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DF3351D92F2A0D1F0093B6FA /* Project object */;
 }
