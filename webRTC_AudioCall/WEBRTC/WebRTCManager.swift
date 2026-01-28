@@ -26,11 +26,16 @@ final class WebRTCManager: ObservableObject {
         bind()
     }
 
+//    func joinRoom(roomId: String) {
+//        self.roomId = roomId
+//        signaling.connect()
+//        signaling.join(roomId: roomId)
+//    }
     func joinRoom(roomId: String) {
         self.roomId = roomId
-        signaling.connect()
-        signaling.join(roomId: roomId)
+        signaling.connectAndJoin(roomId: roomId)
     }
+
 
     func startCall(type: CallType) {
         self.callType = type

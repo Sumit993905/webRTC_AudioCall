@@ -40,6 +40,16 @@ final class SocketSignalingClient {
     func leave(roomId: String) {
         socket.emit("leave", ["roomId": roomId])
     }
+    
+    func connectAndJoin(roomId: String) {
+        socket.connect()
+
+        socket.on(clientEvent: .connect) { [weak self] _, _ in
+            print("🟢 Socket connected, joining room:", roomId)
+            self?.socket.emit("join", ["roomId": roomId])
+        }
+    }
+
 
     func sendOffer(_ sdp: RTCSessionDescription,
                    roomId: String,
