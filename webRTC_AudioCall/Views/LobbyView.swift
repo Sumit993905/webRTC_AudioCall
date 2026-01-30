@@ -16,7 +16,7 @@ struct LobbyView: View {
     @State private var callType: CallType?
 
     @StateObject private var manager =
-        WebRTCManager(signalingURL: URL(string: "https://c12d0e0d85d3.ngrok-free.app")!)
+        WebRTCManager(signalingURL: URL(string: "https://e58ad6a51b05.ngrok-free.app")!)
 
     @Environment(\.dismiss) private var dismiss
 
